@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate unique and creative brand names for your business across multiple categories including technology, fashion, food, health, entertainment, and education.">
+    <meta name="keywords" content="brand name generator, business name generator, company name ideas, startup naming tool, creative business names">
+    <meta name="author" content="BrandGen">
+    <meta name="robots" content="index, follow">
+    <title>BrandGen - Creative Brand Name Generator | Technology, Fashion, Food & More</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#" aria-label="BrandGen Home">
+                    <i data-feather="box" aria-hidden="true"></i>
+                    <span>BrandGen</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <section class="card mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-4">Generate Your Brand Name</h1>
+
+                        <form id="generatorForm" class="mb-4" aria-label="Brand Name Generator Form">
+                            <div class="mb-4">
+                                <label class="form-label">Select Category</label>
+                                <div class="row g-3" role="group" aria-label="Brand Categories">
+                                    <div class="col-md-4">
+                                        <div class="category-card active" data-category="technology" role="button" tabindex="0">
+                                            <i data-feather="cpu" aria-hidden="true"></i>
+                                            <span>Technology</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="category-card" data-category="fashion" role="button" tabindex="0">
+                                            <i data-feather="shopping-bag" aria-hidden="true"></i>
+                                            <span>Fashion</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="category-card" data-category="food" role="button" tabindex="0">
+                                            <i data-feather="coffee" aria-hidden="true"></i>
+                                            <span>Food & Drink</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="category-card" data-category="health" role="button" tabindex="0">
+                                            <i data-feather="heart" aria-hidden="true"></i>
+                                            <span>Health</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="category-card" data-category="entertainment" role="button" tabindex="0">
+                                            <i data-feather="film" aria-hidden="true"></i>
+                                            <span>Entertainment</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="category-card" data-category="education" role="button" tabindex="0">
+                                            <i data-feather="book" aria-hidden="true"></i>
+                                            <span>Education</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="keywords" class="form-label">Additional Keywords (Optional)</label>
+                                <input type="text" class="form-control" id="keywords" 
+                                       placeholder="e.g., innovative, creative"
+                                       aria-describedby="keywordsHelp">
+                                <div id="keywordsHelp" class="form-text">Add your own keywords to make names more personalized</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Name Style</label>
+                                <div class="btn-group w-100" role="group" aria-label="Name Style Options">
+                                    <input type="radio" class="btn-check" name="nameStyle" id="modern" value="modern" checked>
+                                    <label class="btn btn-outline-primary" for="modern">Modern</label>
+
+                                    <input type="radio" class="btn-check" name="nameStyle" id="creative" value="creative">
+                                    <label class="btn btn-outline-primary" for="creative">Creative</label>
+
+                                    <input type="radio" class="btn-check" name="nameStyle" id="professional" value="professional">
+                                    <label class="btn btn-outline-primary" for="professional">Professional</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 btn-lg">
+                                <i data-feather="refresh-cw" aria-hidden="true"></i>
+                                Generate Names
+                            </button>
+                        </form>
+
+                        <div id="loadingIndicator" class="text-center d-none" role="status" aria-label="Loading">
+                            <div class="spinner-border text-primary">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+
+                        <section id="results" class="d-none">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2 class="h3 mb-0">Generated Names</h2>
+                                <select id="sortNames" class="form-select form-select-sm w-auto" aria-label="Sort names">
+                                    <option value="default">Sort by...</option>
+                                    <option value="asc">A to Z</option>
+                                    <option value="desc">Z to A</option>
+                                </select>
+                            </div>
+                            <div id="namesList" class="list-group mb-4" role="list"></div>
+                        </section>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="h3 card-title mb-0">
+                                <i data-feather="star" aria-hidden="true"></i>
+                                Favorites
+                            </h2>
+                        </div>
+                        <div id="favoritesList" class="list-group" role="list"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert" aria-live="polite" aria-atomic="true">
+            <div class="toast-body">
+                Name copied to clipboard!
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="js/nameGenerator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
