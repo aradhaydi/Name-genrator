@@ -1,0 +1,212 @@
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* General styles */
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+    border: 1px solid var(--bs-gray-700);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: var(--bs-gray-900);
+}
+
+/* Category cards */
+.category-card {
+    background: var(--bs-gray-800);
+    border: 2px solid var(--bs-gray-700);
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--bs-primary);
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+.category-card.active {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+    animation: pulse 0.3s ease-in-out;
+}
+
+.category-card [data-feather] {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover [data-feather] {
+    transform: scale(1.1);
+}
+
+.category-card span {
+    display: block;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Form elements */
+.form-control, .form-select {
+    background-color: var(--bs-gray-800);
+    border-color: var(--bs-gray-700);
+    color: var(--bs-light);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--bs-gray-800);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+    color: var(--bs-light);
+}
+
+/* Button styles */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.btn-primary {
+    border-width: 2px;
+}
+
+/* List group items */
+.list-group-item {
+    transition: all 0.3s ease;
+    border: none;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem !important;
+    background-color: var(--bs-gray-800);
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.list-group-item:hover {
+    background-color: var(--bs-gray-700);
+    transform: translateX(5px);
+}
+
+/* Loading spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: var(--bs-primary);
+}
+
+/* Toast styling */
+.toast {
+    background-color: var(--bs-gray-800);
+    color: var(--bs-light);
+    border: 1px solid var(--bs-gray-700);
+}
+
+.toast-body {
+    padding: 1rem;
+}
+
+/* Name preview styles */
+.name-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.name-preview-fonts {
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Copy button animation */
+.copy-btn.btn-success {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-group .btn {
+        border-radius: 0.375rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    .category-card {
+        margin-bottom: 1rem;
+    }
+
+    .name-preview-fonts {
+        display: none;
+    }
+}
+
+/* Icon alignments */
+[data-feather] {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    margin-right: 0.25rem;
+}
+
+.navbar-brand [data-feather] {
+    margin-right: 0.5rem;
+    color: var(--bs-primary);
+}
+
+/* Results section */
+#results {
+    margin-top: 2rem;
+}
+
+#namesList {
+    margin-top: 1rem;
+}
+
+/* Custom form label styling */
+.form-label {
+    color: var(--bs-gray-300);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+/* Optional keyword input styling */
+#keywords {
+    font-size: 0.95rem;
+}
+
+.form-text {
+    color: var(--bs-gray-500);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
